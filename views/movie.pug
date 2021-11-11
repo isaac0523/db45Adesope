@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-   - let result = [{name:"Harry Porter", length:48, director:"Chris Columbus"}, {name:"Bloodshot", length:68, director:"David Wilson"}, {name:"King Arthur", length: 108, director:"Guy Ritchie"}]
+   - let result = results;
   div(class="container-fluid")
     div(class="row")
     each value in result 
