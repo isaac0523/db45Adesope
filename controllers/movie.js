@@ -1,9 +1,16 @@
 var Movie = require('../models/movie'); 
  
 // List of all movies 
-exports.movie_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: movie list'); 
-}; 
+exports.movie_list = async function(req, res) { 
+    try{ 
+        theMovies = await Movie.find(); 
+        res.send(theMovies); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};  
  
 // for a specific movie. 
 exports.movie_detail = function(req, res) { 
