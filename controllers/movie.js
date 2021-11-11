@@ -31,8 +31,20 @@ exports.movie_detail = function(req, res) {
 }; 
  
 // Handle movie create on POST. 
-exports.movie_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: movie create POST'); 
+exports.movie_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new Movie();  
+    document.name = req.body.name; 
+    document.length = req.body.length; 
+    document.director = req.body.director; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // Handle movie delete form on DELETE. 
