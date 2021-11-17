@@ -24,6 +24,7 @@ movie_controller.movie_update_put);
  
 // GET request for one movie. 
 router.get('/movies/:id', movie_controller.movie_detail); 
+
  
 // GET request for list of all movie items. 
 router.get('/movies', movie_controller.movie_list); 
