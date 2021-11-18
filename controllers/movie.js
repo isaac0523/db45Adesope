@@ -55,9 +55,18 @@ exports.movie_create_post = async function(req, res) {
     }   
 }; 
  
-// Handle movie delete form on DELETE. 
-exports.movie_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: movie delete DELETE ' + req.params.id); 
+
+// Handle movie delete on DELETE. 
+exports.movie_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Movie.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle movie update form on PUT. 
@@ -79,5 +88,20 @@ ${JSON.stringify(req.body)}`)
         res.status(500) 
         res.send(`{"error": ${err}: Update for id ${req.params.id} 
 failed`); 
+    } 
+}; 
+
+
+ // Handle a show one view with id specified by query 
+ exports.movie_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Movie.findById( req.query.id) 
+        res.render('moviedetail',  
+{ title: 'movie Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
     } 
 }; 

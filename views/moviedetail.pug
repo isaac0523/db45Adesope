@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let movieid = toShow._id 
+  - let movie_name = toShow.name
+  - let movielength = toShow.length
+  - let moviedirector = toShow.director
+  div 
+    div.row 
+      div(class='movieAttr mr-3') movie ID is: 
+      div #{movieid} 
+    div.row 
+      div(class='movieAttr mr-3') movie name is: 
+      div #{movie_name} 
+    div.row 
+      div(class='movieAttr mr-3') movie Length is: 
+      div #{movielength} 
+    div.row 
+      div(class='movieAttr mr-3') movie Director is: 
+      div #{moviedirector}
