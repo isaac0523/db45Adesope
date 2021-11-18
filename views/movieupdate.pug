@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let movieid = toShow._id 
+  - let moviename = toShow.name
+  - let movielength = toShow.length
+  - let moviedirector = toShow.director 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{movieid} 
+  - let actionid = "/resource/movies/" + movieid 
+  form(id='movieForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.movieAttr(for='name') movie name 
+        input#movie_type(type='text', name='name', value= moviename ) 
+    div.form-group 
+        label.movieAttr(for='length') movie length 
+        input#size(type='number', name='length', value= movielength ) 
+    div.form-group 
+        label.movieAttr(for='director') movie director 
+        input#cost(type='text', name='director', value= moviedirector ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['movieForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
