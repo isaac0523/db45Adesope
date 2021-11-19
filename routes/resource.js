@@ -41,5 +41,5 @@ module.exports = router;
 router.get('/update', movie_controller.movie_update_Page); 
 
 /* GET create movie page */ 
-router.get('/delete', movie_controlers.movie_delete_Page); 
+router.get('/delete', movie_controller.movie_delete_Page); 
  
