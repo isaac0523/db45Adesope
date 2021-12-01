@@ -1,6 +1,6 @@
 const mongoose = require("mongoose") 
-const movieSchema = mongoose.Schema({ 
- name: String, 
+const movieSchema = new mongoose.Schema({ 
+ name: String,
  length: Number, 
  director: String 
 }) 

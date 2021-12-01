@@ -6,13 +6,13 @@ block content
   form(id='movieForm', action="/resource/movies", method="POST") 
     div.form-group 
         label.movieAttr(for='movie_name') movie name 
-        input#movie_name(type='text', name='movie_name') 
+        input#movie_name(type='text', name='name') 
     div.form-group 
         label.movieAttr(for='length') movie length 
-        input#size(type='length', name='length') 
+        input#size(type='number', name='length') 
     div.form-group 
         label.movieAttr(for='director') movie director 
-        input#cost(type='number', name='director') 
+        input#cost(type='text', name='director') 
     input(type="submit") 
  
   script. 
