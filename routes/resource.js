@@ -43,13 +43,13 @@ router.get('/movies', movie_controller.movie_list);
 router.get('/detail', movie_controller.movie_view_one_Page); 
  
 /* GET create movie page */ 
-router.get('/create', movie_controller.movie_create_Page); 
+router.get('/create', secured, movie_controller.movie_create_Page); 
  
 /* GET create update page */ 
 router.get('/update',secured, movie_controller.movie_update_Page); 
 
 /* GET create movie page */ 
-router.get('/delete', movie_controller.movie_delete_Page); 
+router.get('/delete',secured, movie_controller.movie_delete_Page); 
 
 
   module.exports = router; 
